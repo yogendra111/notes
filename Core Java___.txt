@@ -1,0 +1,35 @@
+Core Java__
+
+OOP's Concept:
+Inheritence: one class inherites the field member and member function of another class. code reusablity, abstraction. used to achieve runtime polymorphism.
+Abstraction: Abstraction is a process of hiding the implementation details and showing only functionality to the user. abstraction is achieved by interfaces and abstract classes.
+Polymorphism: one task is performed in different ways, it is known as polymorphism. we use method overloading(runtime) and method overriding(compile time) to achieve polymorphism.
+Encapsulation: Binding (or wrapping) code and data together into a single unit are known as encapsulation. Java bean is the fully encapsulated class because all the data members are private here and have public getter and setter.
+Coupling: refers to the knowledge or information or dependency of another class. we use private, protected, and public modifiers to display the visibility level of a class, method, and field. use interfaces for the weaker coupling.
+Cohesive refers to level of component which performs a well defined task. A single well-defined task is done by a highly cohesive method. The weakly cohesive method will split the task into separate parts.
+Association: represents the relationship between the objects. four types - One to one, one to many, many to one and many to many.
+Aggregation: is a way of achieve association. It represents the weak relationship. It termed as a has-a relationship.
+Composition:  is also a way to achieve Association. It represents the strong relationship.
+
+Primitive datatype: 8, are the building blocks of data manipulation. default values differs for different primitive type.
+NonPrimitive datatype: class, interface, array, user-defined and used to store multiple values. An object reference variable lives on the stack memory and the object in heap. default value of any non-primitive is null. Class, String, Array, Object....
+
+Constructor, initializer block, static block, methods
+public, private, protected, Default
+static, final, this, super
+
+CompileTime Exceptions
+Runtime Exceptions
+Exception Propagation
+
+Difference between abstract class and interface: interface can perform multiple inheritence but abstract class
+
+Collections: 
+Queue: uses FIFO order. 
+queues in java.util package are known as unbounded queue. i.e. queue that are not bound by capacity i.e. we do not need to provide size of the queue.
+queues in java.util.concurrent are known as bounded queue.
+
+
+Java-8__
+Java Functional interface: An Interface that contains exactly one abstract method is known as functional interface. It can have any number of default, static methods but can contain only one abstract method.
+

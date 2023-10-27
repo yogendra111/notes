@@ -1,0 +1,48 @@
+use of this keyword?
+can we override a default method. - yes but it is not recommended or needed.
+how to resolve the ambiguity throw default method. - interface.super.function()
+can we override the static method. - no
+benefits of using functional interface? - helps to achieve functional programming approach, we can shorten our code using Functional interface and lamda expression.
+What are Consumer interface - it take single element and returns no result. abstrct accept() and default andThen()
+benefits of lamda expression - methods store in variable, method of interface multiple implementations, code reduce.
+Stream API - process the data in Collection, processing, lazy intialization. terminal
+String literal, String with new keyword, String builder.
+
+Method Reference: used to refer method of functional interface. compact and easy form of lambda expression.
+Reference to a static method.
+Reference to an instance method.
+Reference to a constructor.
+
+7. Collection (List, ArrayList, LinkedList, Set, HashSet, LinkedHashSet, TreeSet, Queue, PriorityQueue, Map, HashMap, LinkedHashMap,TreeMap, Comparable, Comparator)
+
+8. String Literals - simply a reference to an instance of the String class, which consists of zero or more characters enclosed in double quotes.
+   String - is a sequence of characters.
+String Builder - It is basically used to make a string mutable, it is used when we want to manipulate string again and again, it is asynchronized
+String Buffer - It is synchronized and slower than String builder,
+String Pool - String pool is a common space or memory where all the String are stored which is defined using String literals.
+9. Default and static method in interface
+
+10. Functional Interface - contains one abstract method, helps to achieve functional programming approach.
+11. Predefined Functional Interface 
+(Predicate - boolean-valued function, one argument, test(), and() or(), java.util
+Consumer - used as assignment target interate, one args, accept(), andThen(), java.util
+Supplier - used to produce values, no args, get(), java.util
+Function - used to refer method by specifying type of parameter. It sends result back to referred function, one args one return, apply(), andthen() compose() identity())
+
+
+12. Lambda - A lambda expression is a short block of code which takes in parameters and returns a value. Lambda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method. It simplifies the annonymous inner class and compiler understand the code and write it for us.
+Method Reference - 
+13. Stream API - Java streams represent a pipeline of data, which followed by zero or more intermediate operations, and a terminal operation
+
+Reflection in Java:
+Reflection is an API that is used to examine and modify the behaviour of methods, classes and interfaces at runtime.
+information about class and method that can be execute using that object.
+Class c = Class.forName("com.main.Emp");
+
+we can execute method at runtime irrespective of access spefier used.
+to invoke method in reflection API getDeclaredMethod() and invoke()
+
+Class.getDeclaredMethod(name, parametertype)
+Method.invoke(Object, parameter)
+Class.getDeclaredField(FieldName)
+Field.setAccessible(true)

@@ -1,0 +1,22 @@
+authentication, authorization, ssl, csrf
+Filter -> ServletFilter -> WebServletFilter
+
+FilterChain(
+	LoginFilter
+	LoggingFilter
+	AuthorizationFilter
+) /login
+
+authorizationManager
+SSL
+LoggingFilter - interceptor, aop
+
+authenticationManager
+authenticationProvider
+authenticate(authentication)
+
+BcryptPasswordEncoder in Spring Ecrypt uses salt mechanism.
+
+JWT - subject, claims, 
+
+

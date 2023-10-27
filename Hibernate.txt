@@ -1,0 +1,56 @@
+Hibernate:
+Hibernate is a ORM framework that is used simplify the Java Application to interaction with databases.
+ORM: It is a programming technique that maps the object to the data stored in the database.
+Hibernate framework uses many objects such as session factory, session, transaction etc. alongwith existing Java API such as JDBC (Java Database Connectivity), JTA (Java Transaction API) and JNDI (Java Naming Directory Interface).
+
+SessionFactory: factory of session, client of ConnectionProvider. It holds second level cache (optional) of data.
+The org.hibernate.SessionFactory interface provides factory method to get the object of Session.
+
+Session: The session object provides an interface between the application and data stored in the database.
+It is a short-lived object and wraps the JDBC connection
+It is factory of Transaction, Query and Criteria.
+It holds a first-level cache (mandatory) of data.
+The org.hibernate.Session interface provides methods to insert, update and delete the object. It also provides factory methods for Transaction, Query and Criteria.
+
+Transaction:
+The transaction object specifies the atomic unit of work. It is optional. The org.hibernate.Transaction interface provides methods for transaction management.
+
+ConnectionProvider:
+It is a factory of JDBC connections. It abstracts the application from DriverManager or DataSource. It is optional.
+
+a DataSource is an interface provided by Java that represents a database connection pool. It's a factory for creating and managing connections to a database
+Connection pooling is a technique where a pool of database connections is created and maintained so that the connections can be reused, rather than creating a new connection every time a database operation needs to be performed. This significantly improves the performance and scalability of applications.
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC Database connection settings -->
+        <property name="hibernate.connection.datasource">java:/comp/env/jdbc/myDataSource</property>
+        <!-- other Hibernate configurations -->
+    </session-factory>
+</hibernate-configuration>
+java:/comp/env/jdbc/myDataSource is the JNDI (Java Naming and Directory Interface) name of the DataSource, which allows Hibernate to obtain connections from the specified DataSource.
+
+A transaction manager is a component responsible for managing transactions in a database system. In the context of databases and application development, a transaction refers to a sequence of one or more SQL operations treated as a single unit of work. Transactions are essential for maintaining data integrity and consistency in a database.
+A transaction typically follows the ACID properties.
+
+a native query refers to a SQL query that is written in the native SQL dialect of the underlying database. native queries are specific to the particular relational database being used, such as MySQL, PostgreSQL, Oracle, SQL Server, etc.
+// Assuming session is your Hibernate session object
+String nativeSQLQuery = "SELECT * FROM users WHERE age > :age";
+SQLQuery query = session.createSQLQuery(nativeSQLQuery);
+query.setParameter("age", 18);
+
+// If you expect to map the result to an entity, you can specify the entity class
+query.addEntity(User.class);
+
+List<User> users = query.list();
+
+
+State in Entity: transient manage detach delete.
+caching in sessionFactory and session.
+Java based Hibernate configuration
+Hibernate entity state? https://www.baeldung.com/hibernate-session-object-states
+UniDirection and BiDirectional
+n+ 1 issue in hibernate
+which one is Default Lazy loading or eager
+How to allow to insert a value of column but not to update and vice versa.
+Learn Joins in database and write queries in hibenrate.
+Multiple database connectivity in spring boot with hibernate

@@ -1,0 +1,58 @@
+Redis:Remote Dictionary Server
+Lists, Sets, SortedSets, hashes, Stream, Geospatical indexes, Bitmaps, Bitfields, Hyperloglog, 
+redis-server
+redis-cli
+
+In Redis, there is a configuration file (redis.conf) available at the root directory of Redis.
+get and set all Redis configurations by CONFIG command.
+
+Redis supports 5 types of data types.
+1. Strings: string is a sequence of bytes. Strings in Redis are binary safe,
+- SET name "tutorialspoint"
+- GET name
+A string value can be at max 512 megabytes in length.
+
+2. Hashes: Redis hash is a collection of key value pairs.
+ - HMSET user:1 username tutorialspoint password tutorialspoint points 200
+ - HGETALL user:1
+Every hash can store up to 232 - 1 field-value pairs (more than 4 billion).
+
+3. Lists: Redis Lists are simply lists of strings, sorted by insertion order. You can add elements to a Redis List on the head or on the tail.
+ - lpush tutoriallist redis
+	lpush tutoriallist mongodb
+ - lrange tutoriallist 0 10 
+The max length of a list is 232 - 1 elements (4294967295, more than 4 billion of elements per list).
+
+4. Sets: Redis Sets are an unordered collection of strings. In Redis, you can add, remove, and test for the existence of members in O(1) time complexity.
+ - sadd tutoriallist redis
+	sadd tutoriallist rabitmq 
+ - smembers tutoriallist
+unique property of the set,
+The max number of members in a set is 232 - 1 (4294967295, more than 4 billion of members per set).
+
+5. Sorted Sets: Redis Sorted Sets are similar to Redis Sets, non-repeating collections of Strings. The difference is, every member of a Sorted Set is associated with a score, that is used in order to take the sorted set ordered, from the smallest to the greatest score. While members are unique, the scores may be repeated.
+ - zadd tutoriallist 0 redis 
+ 	zadd tutoriallist 0 mongodb 
+ - ZRANGEBYSCORE tutoriallist 0 1000
+
+Run commands on remote server:
+$ redis-cli -h host -p port -a password
+
+Redis Keys Commands:
+	DEL key
+	DUMP key
+	EXISTS key
+	EXPIRE key
+	PERSIST key
+	TTL key
+	RANDOMKEY
+	RENAME key newkey
+	RENAMENX key newkey
+	TYPE key
+
+Redis MOVE command is used to move a key from the currently selected database to the specified destination database.
+In Redis, by default 0th database is selected, so now we are moving the generated key in the second database.
+MOVE tutorial1 1 
+
+Redis Pub/Sub
+Redis Pub/Sub implements the messaging system where the senders (in redis terminology called publishers) sends the messages while the receivers (subscribers) receive them. The link by which the messages are transferred is called channel.

@@ -1,0 +1,130 @@
+Spring___
+Ioc: Inversion of Control container is  the core of spring Framework. It creates the object, configure, and assembles their dependencies.
+The container uses DI (Dependency Injection) to manage the components that make up the application.
+types of Ioc:
+beanFactory,   - XMLBeanFactory(resource) can use to make application
+applicationContext extends beanFactory		- ClassPathXmlApplicationContext  used for web application.
+
+It has extra features than beanfactory such as simple integration with Spring AOP, message resource handling for I18N.
+
+DI - is a design pattern that make our code loosely coupled
+DL - (Dependency Lookup) - is an approach where we get resource on demand. their can be various way to get resource.
+A a= new A();
+A a= A.getA();
+problem - two main problems
+tight coupling: if resource changed a lot of modification is needed in code.
+Not easy for testing: we face a lot of challenges in testing especially in black box testing.
+
+di removes dependency from program. in such case we provide info from external source such as XML file
+in Spring their are two ways:
+by constructor,
+by setter()
+
+for constructor- <constructor-args> subelement of <bean> is used.
+<constructor-arg value="ghaziabad"></constructor-arg>
+<contructor-arg>
+<ref bean="a1"/>
+</construtor-arg>  
+for collection there are 3 subelement avaible : <list> <set> <map>
+<lis>
+	<value>sdjo</value>
+</list>
+for <map> their is <entry key-ref="" value-ref="" or key="" value=""> subelement present
+
+by setter : <property> subelement of <bean>
+<property name="addressLine1" value="51,Lohianagar"></property>
+<property name="address" ref="address1"></property> 
+<property name="answers">  
+<list>  
+<ref bean="answer1"/>  
+<ref bean="answer2"/>  
+</list>  
+</property>  
+
+difference b/w setter and const injection
+Partial dependency
+Overriding
+Changes: setter injection is flexible than constructor injection.
+
+Bean: A java bean is a class that is serializable, has a no-argument constructor, and uses getters and setter methods for its member fields.
+Bean life cycle: preDestroy, postConstruct, 
+Scope: singleton, prototype
+
+The DispatcherServlet is the front controller in Spring web applications handles an incoming HttpRequest, delegates them to controller classes., and processes that request according to the configured
+
+
+Spring AOP___
+it also provides modularity.
+AOP breaks the program logic into distinct parts (called concerns). It is used to increase modularity by cross-cutting concerns.
+cross-cutting concerns should be centralized in one location in code.
+It provides the pluggable way to dynamically add the additional concern before, after or around the actual logic.
+
+concepts and terminologies:
+Join point: Join point is any point in your program such as method execution, exception handling, field access etc.
+Advice: represents an action taken by an aspect at particular join point.
+	Before, after, after returning, after throwing, around
+Pointcut: is an expression language of AOP that matches join points.
+Introduction
+Target Object: is the object i.e. being advised by one or more aspects.
+Aspect: is a class that contains advices, joinpoints etc.
+Interceptor: is an aspect that contains only one advice.
+AOP Proxy
+Weaving: process of linking aspect with other application types or objects to create an advised object. Spring AOP performs weaving at runtime.
+
+AOP implementation:
+AspectJ
+Spring AOP
+JBoss AOP
+		By Spring1.2 Old style (dtd based) (also supported in Spring3) - ProxyFactoryBean - target, interceptorNames;
+		By AspectJ annotation-style - 
+			@Aspect declares the class as aspect.
+			@Pointcut declares the pointcut expression. - @Pointcut("execution(* Operation.*(..))") will be applied on all the public methods of Operation class. 
+			@Before @After @Around @AfterReturning @AfterThrowing used to create advices.
+
+@Aspect  
+public class TrackOperation{  
+    @Pointcut("execution(* Operation.*(..))")  
+    public void k(){}//pointcut name  
+      
+    @Before("k()")//applying pointcut on before advice  
+    public void myadvice(JoinPoint jp)//it is advice (before advice)  
+    {  
+        System.out.println("additional concern");  
+        //System.out.println("Method Signature: "  + jp.getSignature());  
+    }  
+
+@AfterReturning(pointcut = "execution(* Operation.*(..))", returning= "result")
+
+<aop:aspectj-autoproxy />
+<aop:config>  
+  <aop:aspect id="myaspect" ref="trackAspect" >  
+     <!-- @Before -->  
+     <aop:pointcut id="pointCutBefore"   expression="execution(* com.javatpoint.Operation.*(..))" />  
+     <aop:before method="myadvice" pointcut-ref="pointCutBefore" />  
+  </aop:aspect>  
+</aop:config>  
+
+@ControllerAdvice is an annotation, to handle the exceptions globally.
+@ExceptionHandler is an annotation used to handle the specific exceptions and sending the custom responses to the client.
+
+
+Your RequestMapping should differ on at least one of the conditions; path,method,params,headers,consumes,produces
+
+Annoation: used to associate metadata to program elements like classes, methods, instance variables, etc.
+There are mainly three types of annotations:
+Marker Annotation (without any methods)
+Single-Valued Annotation (with a single method)
+Multi-Valued Annotation (with more than one method)
+
+creating custom annotation:
+public @interface name{
+public String key() default "";
+}
+methods must have no parameters, and cannot throw an exception. Also, the return types are restricted to primitives, String, Class, enums, annotations, and arrays of these types, and the default value cannot be null.
+
+annotation used on another anotation is meta-annotation.
+@Retention: It is used to specify Rentention Policy. These retention policies determine at which point an annotation is discarded. three types of retention policies: SOURCE, CLASS, and RUNTIME.
+@Target: ElementType enumeration is a constant which specifies the type of the program element declaration (class, interface, constructor, etc.) to which the annotation can be applied.
+
+
+

@@ -1,0 +1,29 @@
+Introduction_
+My name is Yogendra Singh.
+I have done my graduation in bachelor of computer application.
+I have total 3 years of work experience on java based technologies.
+such as hibernate, Spring aop, Spring MVC, Spring boot.
+I also have knowledge in some other technologies like for frontend I know Html, css, for database my expertises are in mysql.
+Moreover I have worked with many project management tools like git, Docker, Maven.
+Previously, I have worked with 3 major clients.
+Recently I have worked with client who deals with deliveries and courier in multiple countries. In that project we have many database entities means database tables like for perticular country, state, district, subdistrict, evn for different pincodes. so, their are around 500-600 tables for which we have to create the services. so, we write a script for this purpose and some file templates. So, the basic idea is as our the structure in springboot app is fixed so, with the help of metadta of tables we crreated files in that particular structures for every single entity. Moreover, their are multiple tables so, data fetching is also a complex task for that we use Redis to make cache for data fetching and that make it much faster like if we need 2min for any particular query to retrieve dta, it'll take on 10 sec to fetch same data with this. Moreover we have to make access controls like their are some operation that an admin can perform but writer can not.
+In this project I gained so much knowledge about the Spring archetecture and Reflection API, File handling.
+Apart from these technologies, I am very dedicated toward my work so, I like to being upto date with latest tech and trends to enhance my skills.
+
+
+
+How did you Develop and maintain Java Spring Boot microservices for a complex enterprise application?
+How you develop application through Spring MVC framework.
+How did you setup and configure Spring-based applications using Spring Boot.
+How did you perform CRUD operations using the Spring JDBC template.
+Tell me about containerization using Docker.
+
+
+Are you working on some project?
+No I am not working on any project and open to work.
+
+Can you tell me the client name or project name you are working last?
+No, I can't tell you that as these are confidential information and I can't disclose such information.
+
+For relocation?
+BD Team will contact you.

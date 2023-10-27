@@ -1,0 +1,30 @@
+Association
+How setter injection works internally
+
+context
+reflection api
+file operation
+
+Annotations__
+@Controller -Controllers provide access to the application behavior that you typically define through a service interface. Controllers interpret user input and transform it into a model that is represented to the user by the view.
+@RestController
+@RequestMapping
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+@RequestParam
+@RequestBody
+@PathVariable
+@Autowired
+@Bean
+@Service
+@Component
+@Repository
+@Value
+@Configuration
+@Autoconfigurtion
+@ComponentScan
+@SpringBootApplication
+@ControllerAdvice
+@RequestHandler

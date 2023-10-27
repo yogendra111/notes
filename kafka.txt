@@ -1,0 +1,68 @@
+kafka
+Apache Kafka is an open-source stream-processing software platform which is used to handle the real-time data storage. It works as a broker between two parties, i.e., a sender and a receiver. It can handle about trillions of data events in a day.
+
+-----------Topics-----------
+the word topic refers to a category
+a common name used to store and publish a particular stream of data.
+Topics a sequence of messages is also called a data stream.
+Like a table in database (without all the constraints)
+A topic is identified by its name
+It can store any kind of message format
+you can not query topics, instead, use a Kafka Producer to write data and Kafka consumer to read the data from topic.
+
+-----------Partitions-----------
+Topics are split in partitions (example: 100 partitions)
+    a.Messages within each partition are ordered
+    b.Each messages withing a partition gets an incremental id, called offset.
+Kafka Topics are immutable, once data is written to a partition, it cannot be changed.
+Data is kept only for a limited time (default one week - configurable)
+Order is guaranteed only within a partition (not across partitions).
+Data is randomly assigned to a partition unless a key is provided (more on this later)
+you can have as many partitions per topic as you want.
+
+Key hashing is the process of determining the mapping of a key to partitions.
+In the default Kafka partitioner, the keys are hased using the murmur2 algorithm.
+This means the same key will always go on same partition
+with the formula below of the curious:
+targetPartition = Math.abs(Utils.murmur2(keyBytes)) % (numPartitions - 1)
+
+-----------Offset-----------
+Offset only have meaning for a specific partition
+    a. E.g. offset 3 in partition 0 doesn't represent the same data as offset 3 in partition 1
+    b. Offsets are not reused even if previous messages have been deleted.
+
+-----------Producers-----------
+Producers write data to topics (which are made for partitions)
+Producers know to which partition to write to (and which kafka broker has it)
+In case of Kafka Broker Failure, Producers will automatically recover.
+
+------Zookeeper------
+1. Zookeeper manages brokers (keep a list of them).
+2. Zookeeper helps in performing leader election for partitions.
+3. Zookeeper sends notifications to kafka in case of changes.
+    (e.g. new topic, broker dies, broker comes up, delete topics, etc...)
+
+--Kafka topics list command
+kafka-topics.sh --bootstrap-server <server:port> --list
+kafka-topics.sh --bootstrap-server localhost:9092 --list    
+
+
+--create topic command
+kafka-topics.sh --bootstrap-server localhost:9092 --topic <topic_name> --create
+kafka-topics.sh --bootstrap-server localhost:9092 --topic first_topic --create
+kafka-topics.sh --bootstrap-server localhost:9092 --topic second_topic --describe
+kafka-topics.sh --bootstrap-server localhost:9092 --topic second_topic --delete
+kafka-topics.sh --bootstrap-server localhost:9092 --topic second_topic --create --partitions 3 --replication-factor 3
+kafka-topics.sh --bootstrap-server localhost:9092 --topic second_topic --create --partitions 3
+
+--------producer commands--------
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic
+    -- messges going to be ack by all broker
+        kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic --producer-property acks=all
+
+--------Consumer commands--------
+    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic first_topic
+
+--------------Consumer Groups----------
+    -- With the help of consumer groups all messages sent to topic partitions will spread to consumers registered as groups.
+        e.g => if we have 3 partitions of a topics and three consumers consuming data from the topic so partitions will be assigned to one consumer only and message sent to topic will go to one partition and that partition's data is consumed by one consumer group.

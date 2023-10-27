@@ -1,0 +1,11 @@
+How we can acheive polymorphism?
+Difference between abstract class and interface?
+How we can achieve abstraction? hiding implementation.
+What is encapsulation? with private and public getter/setter.
+What is difference in primitive and non-primitive? in terms of storing
+can we overlaod and override the static method? static belongs class
+how final not allow to overide the method?
+Difference between throw and throws?
+What is an exception? and Exception Propagation?
+try-catch? handle multiple-exception with single catch
+use of super()
